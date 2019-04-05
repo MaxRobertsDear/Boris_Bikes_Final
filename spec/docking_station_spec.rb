@@ -15,6 +15,16 @@ describe DockingStation do
     end
 
   end
+  
+  describe '#dock' do
+    it 'return error when docking more than one bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      bike2 = Bike.new
+      expect { subject.dock(bike2) }.to raise_error("Docking station full")
+    end
+  end
+
 
   it { is_expected.to respond_to(:dock).with(1).argument }
 
