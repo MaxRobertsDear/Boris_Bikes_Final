@@ -15,13 +15,11 @@ describe DockingStation do
     end
 
   end
-  
+
   describe '#dock' do
-    it 'return error when docking more than one bike' do
-      bike = Bike.new
-      subject.dock(bike)
-      bike2 = Bike.new
-      expect { subject.dock(bike2) }.to raise_error("Docking station full")
+    it 'return error when docking more than twenty bikes' do
+      20.times { subject.dock(Bike.new) }
+      expect { subject.dock(Bike.new) }.to raise_error("Docking station full")
     end
   end
 
@@ -33,8 +31,8 @@ describe DockingStation do
   #   expect(subject.dock(bike)).not_to be_nil
   # end
 
-  it "shows stored bike" do
-    expect(subject.bike).to eq @bike
-  end
+  # it "shows stored bike" do
+  #   expect(subject.bikes).to eq @bikes
+  # end
 
 end
